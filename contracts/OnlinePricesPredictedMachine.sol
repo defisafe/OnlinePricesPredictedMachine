@@ -10,22 +10,22 @@ contract OnlinePricesPredictedMachine {
     }
 
      function getPriceEthToDai(uint256 amount) public view returns(uint,uint){
-         return kyberSwapFactory.getEthToDaiPrice(amount);
+         return KyberSwapFactory.getEthToDaiPrice(amount);
      }
 
     function getPriceTokenToToken(ERC20 srcToken,ERC20 destToken,uint256 amount) public returns(uint,uint){
-        return kyberSwapFactory.getPrice(srcToken,destToken,amount);
+        return KyberSwapFactory.getPrice(srcToken,destToken,amount);
     }
 
     function swapEthToToken(ERC20 token, address destAddress) public returns(uint256){
-         return kyberSwapFactory.execSwapEthToToken(token,destAddress);
+         return KyberSwapFactory.execSwapEthToToken(token,destAddress);
     }
 
     function swapTokenToEth(ERC20 token, uint tokenQty, address payable destAddress) public{
-        return kyberSwapFactory.execSwapTokenToEth(token,tokenQty,destAddress);
+        return KyberSwapFactory.execSwapTokenToEth(token,tokenQty,destAddress);
     }
 
     function swapTokenToToken(ERC20 srcToken, uint srcQty, ERC20 destToken, address destAddress) public returns(uint256){
-        return kyberSwapFactory.execSwapTokenToToken(srcToken,srcQty,destToken,destAddress);
+        return KyberSwapFactory.execSwapTokenToToken(srcToken,srcQty,destToken,destAddress);
     }
 }

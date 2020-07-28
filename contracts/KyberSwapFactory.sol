@@ -50,6 +50,30 @@ library KyberSwapFactory {
         return destAmount;
     }
 
+
+    //@dev Swap the user's ETH to ERC20 token
+    //@param ethAmount eth amount 
+    //@param token destination token contract address
+    //@param destAddress address to send swapped tokens to
+    function execSwapEthToToken_Amount(uint256 ethAmount,ERC20 token, address destAddress) public returns(uint256){
+        uint minConversionRate;
+
+        // Get the minimum conversion rate
+        (minConversionRate,) = kyberManger.getExpectedRate(ETH_TOKEN_ADDRESS, token, ethAmount);
+
+        // Swap the ETH to ERC20 token
+        uint destAmount = kyberManger.swapEtherToToken.value(ethAmount)(token, minConversionRate);
+
+        // Send the swapped tokens to the destination address
+        require(token.transfer(destAddress, destAmount));
+
+        // Log the event
+        emit Swap(msg.sender, token, destAmount);
+
+        return destAmount;
+    }
+
+
     //@dev Swap the user's ERC20 token to ETH
     //@param token source token contract address
     //@param tokenQty amount of source tokens

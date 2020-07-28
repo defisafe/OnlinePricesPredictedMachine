@@ -42,19 +42,19 @@ contract OnlinePricesPredictedMachine {
 
     function slipPriceProtectionOfDai(ERC20 srcToken,uint256 amount)public returns(uint256,uint256){
 
-        uint256 standardPrice = getPriceOfDAI(srcToken,mulDiv(_amount,1,100));
-        uint256 actualPrice = getPriceOfDAI(srcToken,_amount);
+        uint256 standardPrice = getPriceOfDAI(srcToken,mulDiv(amount,1,100));
+        uint256 actualPrice = getPriceOfDAI(srcToken,amount);
 
         uint256 errorType = 0;
-        if(_standardPrice == 0){
+        if(standardPrice == 0){
             errorType = 10;
-        }else if(_actualPrice == 0){
+        }else if(actualPrice == 0){
             errorType = 11;
-        }else if(_actualPrice > _standardPrice){
+        }else if(actualPrice > standardPrice){
             errorType = 12;
         }
-        uint256 actualSlip = _standardPrice.sub(_actualPrice); 
-        uint256 maxSlip = mulDiv(_standardPrice,5,100);
+        uint256 actualSlip = standardPrice.sub(actualPrice); 
+        uint256 maxSlip = mulDiv(standardPrice,5,100);
         if(actualSlip > maxSlip){
             errorType = 13;
         }

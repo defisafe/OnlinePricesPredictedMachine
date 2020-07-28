@@ -40,7 +40,7 @@ contract OnlinePricesPredictedMachine {
         return KyberSwapFactory.execSwapTokenToToken(srcToken,srcQty,destToken,destAddress);
     }
 
-    function slipPriceProtectionOfDai(ERC20 srcToken,uint256 amount)public returns(uint256){
+    function slipPriceProtectionOfDai(ERC20 srcToken,uint256 amount)public returns(uint256,uint256){
 
         uint256 standardPrice = getPriceOfDAI(srcToken,mulDiv(_amount,1,100));
         uint256 actualPrice = getPriceOfDAI(srcToken,_amount);
@@ -58,7 +58,7 @@ contract OnlinePricesPredictedMachine {
         if(actualSlip > maxSlip){
             errorType = 13;
         }
-        return errorType;
+        return (errorType,actualPrice);
     }
 
      function mulDiv (uint256 _x, uint256 _y, uint256 _z) public pure returns (uint256) {

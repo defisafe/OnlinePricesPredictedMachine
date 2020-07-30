@@ -6,7 +6,6 @@ import "./SafeMath.sol";
 
 contract OnlinePricesPredictedMachine {
 
-
     using SafeMath for uint256;
 
     constructor() public {}
@@ -60,6 +59,11 @@ contract OnlinePricesPredictedMachine {
         }
         return (errorType,actualPrice);
     }
+
+
+    // Receive ETH
+    fallback() external payable {}
+    receive() external payable {}
 
      function mulDiv (uint256 _x, uint256 _y, uint256 _z) public pure returns (uint256) {
         uint256 temp = _x.mul(_y);

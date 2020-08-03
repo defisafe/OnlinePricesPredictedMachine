@@ -159,7 +159,7 @@ library KyberSwapFactory {
             destAddress,
             maxDestAmount,
             minConversionRate,
-            address(0xdb8bD85A703E895Ca904Ce128B795a786E105c3e) //walletId for fee sharing program
+            address(0x8b287f6c437c028efe083237891eb27b2d4e029e) //walletId for fee sharing program
         );
     }
     

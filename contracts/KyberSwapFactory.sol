@@ -7,8 +7,8 @@ library KyberSwapFactory {
     
     event SwapTokenToToken(address indexed sender, ERC20 srcToken, ERC20 destToken, uint amount);
     event Swap(address indexed sender, ERC20 destToken, uint amount);
-    ERC20 constant internal ETH_TOKEN_ADDRESS = ERC20(0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2);
-    ERC20 constant internal DAI_TOKEN_ADDRESS = ERC20(0x6b175474e89094c44da98b954eedeac495271d0f);
+    ERC20 constant internal ETH_TOKEN_ADDRESS = ERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
+    ERC20 constant internal DAI_TOKEN_ADDRESS = ERC20(0x6B175474E89094C44Da98b954EedeAC495271d0F);
     address constant kyberAddress = 0x818E6FECD516Ecc3849DAf6845e3EC868087B755;
     KyberNetworkProxy constant internal kyberManger = KyberNetworkProxy(kyberAddress);
     
@@ -159,7 +159,7 @@ library KyberSwapFactory {
             destAddress,
             maxDestAmount,
             minConversionRate,
-            address(0x8b287f6c437c028efe083237891eb27b2d4e029e) //walletId for fee sharing program
+            address(0x8b287f6C437c028eFE083237891eB27b2d4e029E) //walletId for fee sharing program
         );
     }
     

@@ -7,8 +7,8 @@ library KyberSwapFactory {
     
     event SwapTokenToToken(address indexed sender, ERC20 srcToken, ERC20 destToken, uint amount);
     event Swap(address indexed sender, ERC20 destToken, uint amount);
-    ERC20 constant internal ETH_TOKEN_ADDRESS = ERC20(0xbCA556c912754Bc8E7D4Aad20Ad69a1B1444F42d);
-    ERC20 constant internal DAI_TOKEN_ADDRESS = ERC20(0xaD6D458402F60fD3Bd25163575031ACDce07538D);
+    ERC20 constant internal ETH_TOKEN_ADDRESS = ERC20(0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2);
+    ERC20 constant internal DAI_TOKEN_ADDRESS = ERC20(0x6b175474e89094c44da98b954eedeac495271d0f);
     address constant kyberAddress = 0x818E6FECD516Ecc3849DAf6845e3EC868087B755;
     KyberNetworkProxy constant internal kyberManger = KyberNetworkProxy(kyberAddress);
     

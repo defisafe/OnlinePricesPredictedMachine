@@ -82,20 +82,20 @@ contract OnlinePricesPredictedMachine {
      }
 
 
-    function getPriceTokenToToken(ERC20 srcToken,ERC20 destToken,uint256 amount) public returns(uint,uint){
+    function getPriceTokenToEth(ERC20 srcToken) public returns(uint256) {
         
         uint256 tokenIDSrcToken = tokenPriceFeedStruct.tokenID_Manager[address(srcToken)];
         address feedAddressSrcToken = tokenPriceFeedStruct.feedAddressManager[tokenIDSrcToken];
         AggregatorInterface feedManagerSrcToken = AggregatorInterface(feedAddressSrcToken);
-        uint256 priceSrcTokenToEth = feedManagerSrcToken.latestAnswer;
+        return feedManagerSrcToken.latestAnswer; 
+    }
+
+
+    function getPriceTokenToToken(ERC20 srcToken,ERC20 destToken,uint256 amount) public returns(uint,uint){
         
-        uint256 tokenIDDestToken = tokenPriceFeedStruct.tokenID_Manager[address(destToken)];
-        address feedAddressDestToken = tokenPriceFeedStruct.feedAddressManager[tokenIDDestToken];
-        AggregatorInterface feedManagerDestToken = AggregatorInterface(feedAddressDestToken);
-        uint256 priceDestTokenToEth = feedManagerDestToken.latestAnswer;
-        
+        uint256 priceSrcTokenToEth = getPriceTokenToEth(srcToken);
+        uint256 priceDestTokenToEth = getPriceTokenToEth(destToken);
         uint256 getPriceEthToDestToken = mulDiv(1e18,1e18,priceDestTokenToEth);
-        
         return mulDiv(priceSrcTokenToEth,getPriceEthToDestToken,1e18);
     }
 

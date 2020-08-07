@@ -1,4 +1,5 @@
-pragma solidity 0.6.0;
+pragma solidity >=0.6.2;
+
 import "./ERC20Interface.sol";
 
 interface OnlinePricesPredictedMachine {
@@ -9,5 +10,6 @@ interface OnlinePricesPredictedMachine {
     function swapEthToToken_Amount(uint256 ethAmount,ERC20 token, address destAddress) external returns(uint256);
     function swapTokenToEth(ERC20 token, uint tokenQty, address payable destAddress) external;
     function swapTokenToToken(ERC20 srcToken, uint srcQty, ERC20 destToken, address destAddress) external returns(uint256);
-    function slipPriceProtectionOfDai(ERC20 srcToken,uint256 amount)external returns(uint256,uint256);
 }
+
+

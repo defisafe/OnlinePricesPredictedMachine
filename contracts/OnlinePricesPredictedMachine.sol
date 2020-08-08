@@ -30,7 +30,7 @@ contract OnlinePricesPredictedMachine {
     
     constructor() public {
         owner = msg.sender;
-        slipValue = 2;
+        slipValue = 1;
     }
     
      modifier onlyOwner() {

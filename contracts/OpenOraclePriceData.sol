@@ -38,7 +38,7 @@ contract OpenOraclePriceData {
     }
     
     
-    function getPriceOfUSDT(ERC20 srcToken) public view returns(uint256 lastPrice,uint256 tokenToEthRoundID,uint256 usdtToEthRoundID){
+    function getPriceTokenToUsdt(ERC20 srcToken) public view returns(uint256 lastPrice,uint256 tokenToEthRoundID,uint256 usdtToEthRoundID){
         
         address feedAddress = feedAddressManager[address(srcToken)];
         require (feedAddress != address(0),"This Token quote is not supported .");
@@ -125,7 +125,7 @@ contract OpenOraclePriceData {
      }
      
      
-    function getPriceOfUSDT_history(ERC20 srcToken,uint256 tokenToEthRoundID,uint256 usdtToEthRoundID,uint256 oldStartTime,uint256 timePeriod) public view returns(uint256){
+    function getPriceTokenToUsdt_history(ERC20 srcToken,uint256 tokenToEthRoundID,uint256 usdtToEthRoundID,uint256 oldStartTime,uint256 timePeriod) public view returns(uint256){
         
         address feedAddress = feedAddressManager[address(srcToken)];
         require (feedAddress != address(0),"This Token quote is not supported .");

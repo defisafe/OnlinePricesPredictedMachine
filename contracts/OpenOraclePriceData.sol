@@ -179,9 +179,7 @@ contract OpenOraclePriceData {
         
         address srcTokenAddress = address(srcToken);
         if(srcTokenAddress == ETH_TOKEN_ADDRESS){
-            uint256 piceEthToUsdt = 0;
-            (piceEthToUsdt,) = getPriceEthToUsdt_history(usdtToEthRoundID,oldStartTime,timePeriod);
-            return piceEthToUsdt;
+            return getPriceEthToUsdt_history(usdtToEthRoundID,oldStartTime,timePeriod);
         }else{
             address feedAddress = feedAddressManager[address(srcToken)];
             require (feedAddress != address(0),"This Token quote is not supported .");

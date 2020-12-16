@@ -3,17 +3,8 @@ pragma solidity >=0.6.2;
 import "./ERC20Interface.sol";
 
 interface OpenOraclePriceData {
-    function getPriceTokenToUsdt(ERC20 srcToken) external view returns(uint256 lastPrice,uint256 tokenToEthRoundID,uint256 usdtToEthRoundID);
-    function getPriceEthToUsdt() external view returns(uint256 lastPrice,uint256 usdtToEthRoundID);
-    function getPriceTokenToEth(ERC20 srcToken) external view returns(uint256 lastPrice,uint256 tokenToEthRoundID);
-    function getPriceTokenToToken(ERC20 srcToken,ERC20 destToken) external view returns(uint256 lastPrice,uint256 srcTokenToETHRoundID,uint256 destTokenToEthRoundID);
-    function getPriceEthToToken(ERC20 destToken) external view returns(uint256 lastPrice,uint256 destTokenToEthRoundID);
-    function getPriceEthToUsdt_history(uint256 oldUsdtToEthRoundID,uint256 oldStartTime,uint256 timePeriod) external view returns(uint256 lastPrice);
-    function getPriceTokenToUsdt_history(ERC20 srcToken,uint256 tokenToEthRoundID,uint256 usdtToEthRoundID,uint256 oldStartTime,uint256 timePeriod) external view returns(uint256);
-    function getPriceTokenToUsdt_specified(ERC20 srcToken,uint256 tokenToEthRoundID,uint256 usdtToEthRoundID) external view returns(uint256 priceSpecified,uint256 timeTokenToEthSpecified,uint256 timeUsdtToEthSpecified);
-    function getPriceEthToUsdt_specified(uint256 oldUsdtToEthRoundID) external view returns(uint256 priceSpecified,uint256 timeSpecified);
-    //Get token-Eth the historical price
-    function getRoundID_history(ERC20 srcToken,uint256 oldRoundID,uint256 oldStartTime,uint256 timePeriod) external view returns(uint256);
+    function getPriceTokenToUsdt(address srcTokenAddress) external view returns(uint256 isValid, uint256 lastPrice);
+    function getPriceTokenToEth(address srcTokenAddress)external view returns(uint256);
 }
 
 
